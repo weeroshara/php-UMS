@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+}
+h4{
+    letter-spacing: 7px;
+    font-size: 20px;
+    color: blue;
+    margin: 5px auto;
+    padding: 1rem;
+    text-align: center;
+}
+form{
+    background-color: rgb(248, 234, 155);
+    height: 50Vh;
+    width: 50%;
+    position: absolute;
+    top: 20%;
+    left: 25%;
+}
+h2{
+    text-align: center;
+}
+.input{
+    width: 30%;
+    height: 1.7rem;
+    background-color: rgb(224, 222, 223);
+    margin-left: 35%;
+}
+.button{
+    position: absolute;
+    margin-top: 20px;
+    width: 31%;
+    height: 2.5rem;
+    box-shadow: 1px 1px 7px rgb(61, 60, 60);
+    background-color: crimson;
+    cursor: pointer;
+    border-color: black;
+    top: 75%;
+    left: 35%;
+}
+fieldset{
+    margin-left: 3%;
+    padding-top: 4px;
+    width: 90%;
+    height: 45vh;
+}
+
+header{
+    background-color: darkgrey;
+    overflow: auto;
+    
+}
+.company{
+    float: left;
+    padding-left: 10px;
+}
+.leftTin{
+    float: right;
+    padding-right: 10px;
+}
