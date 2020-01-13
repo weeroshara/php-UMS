@@ -52,9 +52,38 @@ header{
 }
 .company{
     float: left;
-    padding-left: 10px;
+    padding-left: 5%;
+    font-size: larger;
 }
 .leftTin{
     float: right;
-    padding-right: 10px;
+    font-size: larger;
+    padding-right: 10%;
+    padding-left: 50px;
 }
+.heduser{
+    padding-left: 10%;
+    padding-top: 2%;
+}
+table{
+    margin-top: 5px;
+    position: absolute;
+    width: 80%;
+    top: 10%;
+    left: 10%;
+    border-collapse: collapse;
+    
+    
+}
+th{
+    background-color: darkgray;
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid rgb(201, 197, 197);
+}
+td{
+    padding: 10px;
+    border-bottom: 1px solid rgb(201, 197, 197);
+    
+}
+

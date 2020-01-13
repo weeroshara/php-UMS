@@ -26,7 +26,16 @@
                    $user=mysqli_fetch_assoc($result_set);
                    $_SESSION['name']=$user['first_name'];
                    $_SESSION['hname']=$user['first_name'];
-                   ini_set('session.cookie_lifetime',  0);
+
+                   //login time set
+                   $query="UPDATE user SET last_login = NOW() ";
+                   $query .="WHERE first_name='{$_SESSION['name']}' LIMIT 1";
+
+                   $result_set=mysqli_query($connection, $query);
+
+                   if(!$result_set){
+                       die("connection faild");
+                   }
 
                    header('Location: user.php');
                }else{
