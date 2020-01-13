@@ -25,6 +25,9 @@
     <div class="leftTin">welcome <?php echo $_SESSION['hname']; ?> <a href="logout.php">sine out</a></div>
     </header>
 
-    <?php unset($_SESSION['hname']);  ?>
+    <?php 
+    
+        unset($_SESSION['hname'])
+    ?>
 </body>
 </html>

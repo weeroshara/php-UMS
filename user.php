@@ -13,5 +13,6 @@
 ?>
 
 <h3>user</h3>
+<a href="user2.php">user2</a>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <?php
     echo $_SESSION['name'];
 
-    if(!isset($_SESSION['user'])){
+    if(!isset($_SESSION['name'])){
         header('Location: index.php');
     }
 ?>
