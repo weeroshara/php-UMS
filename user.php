@@ -13,7 +13,7 @@
 <?php include('inc/header.php');
 ?>
 
-<h3 class="heduser">User Details <a href="adduser.php" style="padding-left:70%"> + Add User</a> </h3>
+<h3 class="heduser">User Details <a href="addNewUser.php" style="padding-left:70%"> + Add User</a> </h3>
 <?php
     $user_list='';
     $query="SELECT id,first_name,email,last_login FROM user WHERE is_delited=0 ORDER BY first_name";

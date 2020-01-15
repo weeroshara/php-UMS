@@ -22,11 +22,11 @@
 <body>
     <header>
     <div class="company">USER MANAGEMENT SYSTEMS</div>
-    <div class="leftTin" >welcome <?php echo $_SESSION['hname']; ?><a href="logout.php" style='padding-left:50px;'>sine out</a></div>
+    <div class="leftTin" style="" >welcome <?php echo $_SESSION['hname']; ?><a href="logout.php" style='padding-left:50px; color: white;'>sine out</a></div>
     </header>
 
     <?php 
-        unset($_SESSION['hname']);
+        //unset($_SESSION['hname']);
     ?>
 </body>
 </html>
