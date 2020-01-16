@@ -26,7 +26,7 @@
     </header>
 
     <?php 
-        //unset($_SESSION['hname']);
+        unset($_SESSION['hname']);
     ?>
 </body>
 </html>

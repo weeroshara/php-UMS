@@ -1,53 +1,56 @@
-<?php include_once('inc/connection.php'); 
-    session_start()
-?>
 <?php
+    include_once('inc/connection.php');
+    session_start();
 
-    $_SESSION['hname']=$_SESSION['name'];
+    
+    $id='';
 
     $fname='';
     $lname='';
     $email='';
-    if(isset($_POST['submit'])){
-        $error=array();
-        $fname=$_POST['fname'];
-        $lname=$_POST['lname'];
-        $email=mysqli_real_escape_string($connection, $_POST['email']);
-        $pass=$_POST['pass'];
-        
 
-        $hashpass=sha1($pass);
-        if(isset($fname) && isset($lname) && isset($email) && isset($pass) && !empty($fname) && !empty($lname) && !empty($email) && !empty($pass)){
-            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $error[]="is a invalid email address";
+
+    $error=array();
+    $_SESSION['hname']=$_SESSION['name'];
+        $query="SELECT * FROM user WHERE id={$_GET['user_id']} LIMIT 1";
+        $resultSet=mysqli_query($connection, $query);
+        $id=$_GET['user_id'];
+        if($resultSet){
+            if(mysqli_num_rows($resultSet)==1){
+               $id=$_GET['user_id'];
+                $result=mysqli_fetch_assoc($resultSet);
+                $fname=$result['first_name'];
+                $lname=$result['last_name'];
+                $email=$result['email'];               
+                
+                
+                
             }else{
-                $qurry1="SELECT * FROM user WHERE email='{$email}' LIMIT 1";
-                $resultSet=mysqli_query($connection, $qurry1);
-                if($resultSet){
-                    if(mysqli_num_rows($resultSet)==1){
-                        $error[]='email is exiset';
-                    }else{
-                        $query="INSERT INTO user (first_name,last_name,email,password,is_delited) VALUES ('{$fname}','{$lname}','{$email}','{$hashpass}',0)";
-
-                        $result_stt=mysqli_query($connection, $query);
-
-                        $fname='';
-                        $lname='';
-                        $email='';
-
-                        if(!$result_stt){
-                            die('some query issu');
-                        }
-                    }
-                }else{
-                    $error[]='query error';
-                }
+                $error[]='queury error';
+                //die('fetch assoc error');
             }
         }else{
-            $error[]='invalid field';
-            
+            $error[]='queury error';
+            //header('Location: user.php');
+            //die('query rror');
         }
-    }
+        
+        if(isset($_POST['submit'])){
+            $id=$_POST['id'];
+            $fname=$_POST['fname'];
+            $lname=$_POST['lname'];
+            $email=$_POST['email'];
+             $query1="UPDATE user SET first_name='{$fname}', last_name='{$lname}', email='{$email}' WHERE id={$id} LIMIT 1";
+             $result_Set=mysqli_query($connection, $query1);
+             if($result_Set){
+                 header('Location: user.php');
+             }else{
+                 die('some connection error');
+             }
+        } 
+  
+
+    
 
 ?>
 
@@ -62,7 +65,7 @@
 </head>
 <body>
     <h3><a href="user.php">go back</a></h3>
-    <form action="addNewUser.php" method="post">
+    <form action="modify_user.php?" method="post">
         <fieldset class="fieldset">
             <legend class="legend">Add new user</legend>
             <div>
@@ -73,6 +76,7 @@
 
                     }
                 ?>
+                <input type="hidden" name="id" class="id" value='<?php echo $id ?>'>
                 <div class="block">
                 <label for="" class="lable">first name</label>
                 <input type="text" name="fname" class="inputnew" id="" <?php echo "value='".$fname."'" ?>><br><br>
@@ -90,7 +94,7 @@
 
                 <div class="block">
                 <label for="" class="lable">password</label>
-                <input type="password" name="pass" class="inputnew" id=""><br><br>
+                <p >  ***** | <a href="changepass.php">change password</a></p>
                 </div>
 
                 <input type="submit" value="Add user" name="submit" class="submit">
